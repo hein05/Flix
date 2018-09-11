@@ -30,8 +30,8 @@ The following **additional** user stories are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.AFPNetworking framework seems gilchy. Is there better way to implement it. Or is it not caching.
-2.How do we animate the each cell when searchbar is clicked.
+1. AFPNetworking framework seems gilchy. Is there better way to implement it. Or is it not caching.           
+2. How do we animate the each cell when searchbar is clicked.
 
 ## Video Walkthrough
 
