@@ -1,24 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uku-IW-s6h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Now Playing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NowPlayingViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yil-It-Bbd">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="35" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GhD-wi-CUT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="201" id="rkM-vy-ZcD" customClass="MovieCell" customModule="Flix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="201"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rkM-vy-ZcD" id="R05-nT-u7p">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FEQ-Qp-aPE">
+                                                    <rect key="frame" x="0.0" y="11" width="130" height="175"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="130" id="7Am-HK-y7W"/>
+                                                        <constraint firstAttribute="height" constant="175" id="vSA-d7-xOE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Seven Deadly Sins: Prisoners of the Sky" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAZ-q2-LR8">
+                                                    <rect key="frame" x="138" y="0.0" width="237" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Hto-Ln-fSC"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="buP-yG-cM4"/>
+                                                        <constraint firstAttribute="width" constant="237" id="mED-EF-VGi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kt-Jc-9D4">
+                                                    <rect key="frame" x="138" y="40" width="237" height="146"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="237" id="o8c-Dh-NMr"/>
+                                                        <constraint firstAttribute="height" constant="146" id="qgd-CK-hqT"/>
+                                                    </constraints>
+                                                    <string key="text">"The Seven Deadly Sins travel to a remote land in search of the phantom ingredient "sky fish." Meliodas and Hawk end up at a "Sky Palace" that exists above the clouds, where all the residents have wings. Meliodas is mistaken for a boy who committed a crime and is thrown in prison. Meanwhile, the residents are preparing a ceremony for defense against a ferocious beast that awakens once every 3,000 years. But the Six Knights of Black, a Demon Clan army, arrives and removes the seal on the beast in order to threaten the lives of the residents of Sky Palace. Meliodas and his allies meet the Six Knights of Black in battle."</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FEQ-Qp-aPE" firstAttribute="leading" secondItem="R05-nT-u7p" secondAttribute="leading" id="0bg-NA-wFY"/>
+                                                <constraint firstItem="FEQ-Qp-aPE" firstAttribute="top" secondItem="R05-nT-u7p" secondAttribute="top" constant="11" id="5bM-sF-4Uk"/>
+                                                <constraint firstItem="4kt-Jc-9D4" firstAttribute="leading" secondItem="iAZ-q2-LR8" secondAttribute="leading" id="FT6-tw-vFD"/>
+                                                <constraint firstItem="4kt-Jc-9D4" firstAttribute="bottom" secondItem="FEQ-Qp-aPE" secondAttribute="bottom" id="MLb-J6-9oQ"/>
+                                                <constraint firstItem="4kt-Jc-9D4" firstAttribute="top" secondItem="iAZ-q2-LR8" secondAttribute="bottom" id="SjK-KR-W5d"/>
+                                                <constraint firstAttribute="bottom" secondItem="FEQ-Qp-aPE" secondAttribute="bottom" constant="14.5" id="bAT-Ce-JLY"/>
+                                                <constraint firstItem="iAZ-q2-LR8" firstAttribute="leading" secondItem="FEQ-Qp-aPE" secondAttribute="trailing" constant="8" id="igJ-TL-YsC"/>
+                                                <constraint firstAttribute="trailing" secondItem="iAZ-q2-LR8" secondAttribute="trailing" id="ukM-kq-A06"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="overviewLbl" destination="4kt-Jc-9D4" id="h1u-mV-FoM"/>
+                                            <outlet property="posterImage" destination="FEQ-Qp-aPE" id="HTs-mS-fA7"/>
+                                            <outlet property="titleLbl" destination="iAZ-q2-LR8" id="t4I-nT-P6h"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GhD-wi-CUT" secondAttribute="trailing" id="2Gy-k3-x8L"/>
+                            <constraint firstItem="GhD-wi-CUT" firstAttribute="centerX" secondItem="yil-It-Bbd" secondAttribute="centerX" id="3pK-Le-1Za"/>
+                            <constraint firstItem="GhD-wi-CUT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AJ7-gH-Bia"/>
+                            <constraint firstItem="GhD-wi-CUT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="D1t-Kd-pzz"/>
+                            <constraint firstItem="GhD-wi-CUT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IMA-xw-DXf"/>
+                            <constraint firstItem="yil-It-Bbd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="315" id="eq8-gX-I1S"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4ID-jD-v0J">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="3DV-fi-aib">
+                            <connections>
+                                <segue destination="nP3-Ki-vH0" kind="presentation" id="Sxg-DE-vc4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="TableView" destination="GhD-wi-CUT" id="qOw-9V-mSV"/>
+                        <outlet property="loadingAnim" destination="yil-It-Bbd" id="pNh-Fa-wxI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-618.39999999999998" y="-1466.7166416791606"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="yiw-io-GfS">
+            <objects>
+                <viewController id="nP3-Ki-vH0" customClass="SearchViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cPb-Jy-Pk2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-as-yBf">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UQA-BP-a9a">
+                                    <size key="itemSize" width="181" height="241"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="dSU-HF-ogO" customClass="MovieCollectionCell" customModule="Flix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="181" height="241"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="181" height="241"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9S-9r-U6L">
+                                                    <rect key="frame" x="0.0" y="0.0" width="181" height="241"/>
+                                                    <color key="backgroundColor" red="1" green="0.55534817029574812" blue="0.24459390010597071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.99278582334931287" green="1" blue="0.94720426659672052" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="F9S-9r-U6L" firstAttribute="leading" secondItem="dSU-HF-ogO" secondAttribute="leading" id="4LH-S0-oze"/>
+                                            <constraint firstAttribute="trailing" secondItem="F9S-9r-U6L" secondAttribute="trailing" id="Nfs-qV-Mhv"/>
+                                            <constraint firstItem="F9S-9r-U6L" firstAttribute="top" secondItem="dSU-HF-ogO" secondAttribute="top" id="hNh-8u-ILA"/>
+                                            <constraint firstAttribute="bottom" secondItem="F9S-9r-U6L" secondAttribute="bottom" id="ktj-nX-s8o"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="posterImage" destination="F9S-9r-U6L" id="0Ep-t3-E7y"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MwO-AX-FGt">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qlQ-as-yBf" firstAttribute="leading" secondItem="MwO-AX-FGt" secondAttribute="leading" id="GQ3-qN-Lz1"/>
+                            <constraint firstItem="qlQ-as-yBf" firstAttribute="trailing" secondItem="MwO-AX-FGt" secondAttribute="trailing" id="MgK-lb-vQo"/>
+                            <constraint firstItem="qlQ-as-yBf" firstAttribute="top" secondItem="MwO-AX-FGt" secondAttribute="bottom" id="OXt-vt-MpC"/>
+                            <constraint firstItem="MwO-AX-FGt" firstAttribute="leading" secondItem="cPb-Jy-Pk2" secondAttribute="leading" id="SJF-ZN-RvQ"/>
+                            <constraint firstItem="MwO-AX-FGt" firstAttribute="top" secondItem="NCf-50-KoA" secondAttribute="top" id="edm-MK-V1m"/>
+                            <constraint firstItem="qlQ-as-yBf" firstAttribute="bottom" secondItem="NCf-50-KoA" secondAttribute="bottom" id="hc0-bd-usH"/>
+                            <constraint firstAttribute="trailing" secondItem="MwO-AX-FGt" secondAttribute="trailing" id="qWt-q0-RYu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NCf-50-KoA"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="qlQ-as-yBf" id="w02-RQ-EIM"/>
+                        <outlet property="searchBar" destination="MwO-AX-FGt" id="x6y-cI-fl4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24Q-kg-Zhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194.40000000000001" y="-1465.8170914542729"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UGp-aB-VB5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uku-IW-s6h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="NID-ZW-CSI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wzE-UW-T2B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oA4-fz-S40" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1356" y="-1465.8170914542729"/>
         </scene>
     </scenes>
 </document>
