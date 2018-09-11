@@ -37,7 +37,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://imgur.com/2whbcZ5.jpg' title='Flix_working_video' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/00OKrW4.jpg' title='Flix_working_video' width='' alt='Video Walkthrough' />
 <img src='https://imgur.com/ttoPLCZ.jpg' title='Flix_NetworkError_video' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
