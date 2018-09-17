@@ -27,14 +27,15 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
         TableView.delegate = self
         TableView.insertSubview(refreshControl, at: 0)
         TableView.dataSource = self as UITableViewDataSource
         
         self.loadingAnim.startAnimating()
-        
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         self.leftRightDetect()
     }

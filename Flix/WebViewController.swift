@@ -14,6 +14,10 @@ class WebViewController: UIViewController {
 // MARK:PROPERTY START
     @IBOutlet weak var activityAnim: UIActivityIndicatorView!
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     var key:String?
     var movieID:Int?
     private var apiVideo:String?
@@ -71,6 +75,7 @@ class WebViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   
 
 
 }
