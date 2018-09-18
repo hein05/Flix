@@ -256,13 +256,14 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZh-3k-wbP">
-                                <rect key="frame" x="0.0" y="394" width="375" height="224"/>
+                                <rect key="frame" x="0.0" y="394" width="375" height="216"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haz-NN-Df6" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5G-a4-UU8">
-                                                <rect key="frame" x="8" y="0.0" width="367" height="221"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5G-a4-UU8">
+                                                <rect key="frame" x="8" y="0.0" width="367" height="216"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Where does it come from?
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
@@ -275,23 +276,17 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="q5G-a4-UU8" secondAttribute="trailing" id="Ode-5b-904"/>
-                                            <constraint firstItem="q5G-a4-UU8" firstAttribute="leading" secondItem="haz-NN-Df6" secondAttribute="leading" constant="8" id="Yeq-GE-bSj"/>
-                                            <constraint firstAttribute="bottom" secondItem="q5G-a4-UU8" secondAttribute="bottom" constant="3" id="arj-ET-TCd"/>
-                                            <constraint firstItem="q5G-a4-UU8" firstAttribute="top" secondItem="haz-NN-Df6" secondAttribute="top" id="bm0-sP-IEt"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="haz-NN-Df6" firstAttribute="top" secondItem="NZh-3k-wbP" secondAttribute="top" id="8Hf-cu-yyT"/>
-                                    <constraint firstAttribute="bottom" secondItem="haz-NN-Df6" secondAttribute="bottom" id="MK6-55-w0b"/>
-                                    <constraint firstItem="haz-NN-Df6" firstAttribute="centerY" secondItem="NZh-3k-wbP" secondAttribute="centerY" id="YLI-nL-S4K"/>
-                                    <constraint firstAttribute="trailing" secondItem="haz-NN-Df6" secondAttribute="trailing" id="e41-62-Qi0"/>
-                                    <constraint firstItem="haz-NN-Df6" firstAttribute="leading" secondItem="NZh-3k-wbP" secondAttribute="leading" id="fDe-Fb-9Hs"/>
-                                    <constraint firstItem="haz-NN-Df6" firstAttribute="centerX" secondItem="NZh-3k-wbP" secondAttribute="centerX" id="hI8-HG-YkT"/>
+                                    <constraint firstAttribute="trailing" secondItem="haz-NN-Df6" secondAttribute="trailing" id="39b-cd-0II"/>
+                                    <constraint firstItem="haz-NN-Df6" firstAttribute="top" secondItem="NZh-3k-wbP" secondAttribute="top" id="558-Ks-YJd"/>
+                                    <constraint firstItem="haz-NN-Df6" firstAttribute="leading" secondItem="NZh-3k-wbP" secondAttribute="leading" id="5h0-zn-ZTs"/>
+                                    <constraint firstAttribute="bottom" secondItem="haz-NN-Df6" secondAttribute="bottom" id="Vai-62-4XA"/>
+                                    <constraint firstItem="haz-NN-Df6" firstAttribute="centerX" secondItem="NZh-3k-wbP" secondAttribute="centerX" id="ZAB-CI-Eik"/>
+                                    <constraint firstItem="haz-NN-Df6" firstAttribute="centerY" secondItem="NZh-3k-wbP" secondAttribute="centerY" id="ul1-mG-D1F"/>
                                 </constraints>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H1W-Xg-RtK">
@@ -324,7 +319,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                             <constraint firstAttribute="bottom" secondItem="Q4u-NE-X8I" secondAttribute="bottom" id="b5W-Yx-Dep"/>
                             <constraint firstItem="Q4u-NE-X8I" firstAttribute="leading" secondItem="H1W-Xg-RtK" secondAttribute="leading" id="cfy-EB-Wec"/>
                             <constraint firstItem="EiO-Aq-hwX" firstAttribute="leading" secondItem="mZL-ih-IJ3" secondAttribute="trailing" constant="29" id="h6S-8T-mnv"/>
-                            <constraint firstItem="NZh-3k-wbP" firstAttribute="bottom" secondItem="Q4u-NE-X8I" secondAttribute="bottom" constant="-49" id="i0r-D7-s2v"/>
+                            <constraint firstItem="NZh-3k-wbP" firstAttribute="bottom" secondItem="Q4u-NE-X8I" secondAttribute="bottom" constant="-57" id="i0r-D7-s2v"/>
                             <constraint firstItem="Q4u-NE-X8I" firstAttribute="top" secondItem="crP-pA-wdI" secondAttribute="top" constant="192" id="jHk-np-Ge3"/>
                             <constraint firstItem="H1W-Xg-RtK" firstAttribute="top" secondItem="crP-pA-wdI" secondAttribute="top" id="lfS-gD-6EU"/>
                             <constraint firstItem="8I6-28-9HX" firstAttribute="leading" secondItem="mZL-ih-IJ3" secondAttribute="trailing" constant="23" id="lxl-Oy-F5m"/>
