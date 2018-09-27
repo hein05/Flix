@@ -37,7 +37,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![](https://imgur.com/00OKrW4)
+<img src='https://imgur.com/00OKrW4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -86,10 +87,17 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-Flix2_NetworkError_All_Views                        Flix2_All_Views
+##Flix2_NetworkError_All_Views
 
-![](https://imgur.com/SdntvjO.gif)                  ![](https://imgur.com/tqIXC9u.gif)  
+https://imgur.com/SdntvjO.gif
 
+<img src='https://imgur.com/SdntvjO.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+##Flix2_AllView
+
+https://imgur.com/tqIXC9u.gif
+
+<img src='https://imgur.com/tqIXC9u.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
