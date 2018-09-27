@@ -119,7 +119,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
     // MARK:SEGUE TO DETAIL_VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailFromCollectionVC" {
-            
+    
             if let index = selectedIndex {
                 let destinVC = segue.destination as! DetailCellViewController
                 destinVC.movieDetail = self.filteredMovie?[index]
@@ -169,7 +169,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
             appearing.startAnimation()
             
         } else {
-            //            going down__Disappearing
+            //going down__Disappearing
             if self.searchBar.alpha > 0.0 {
                 appearing.stopAnimation(true)
                 
