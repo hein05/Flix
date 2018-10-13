@@ -17,7 +17,6 @@ class WebViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
     var key:String?
     var movieID:Int?
     private var apiVideo:String?

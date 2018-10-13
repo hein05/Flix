@@ -21,7 +21,8 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UITableVi
     private var apiNowPlayingString: String = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
     private var apiTopRatedString: String  = "https://api.themoviedb.org/3/movie/top_rated?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1"
     
-    private var movies: [[String: Any]] = []
+    var moviesDict:[[String:Any]] = []
+    var movies: [Movie] = []
     // MARK:PROPERTIES END
     
     override func viewDidLoad() {
@@ -60,19 +61,24 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
-                let movie = movies[indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
-        let basePosterPath = "https://image.tmdb.org/t/p/w500"
+        let movie = movies[indexPath.row]
+        cell.movie  = movie
+//        let title = movie["title"] as! String
+//        let overview = movie["overview"] as! String
+//        let posterPath = movie["poster_path"] as! String
+//        let basePosterPath = "https://image.tmdb.org/t/p/w500"
         
-        if let posterURL = URL(string: basePosterPath + posterPath) {
-            cell.posterImage.af_setImage(withURL: posterURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
-        } else {
-            cell.posterImage = nil
+//        if let posterURL = URL(string: basePosterPath + posterPath) {
+//            cell.posterImage.af_setImage(withURL: posterURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
+//        } else {
+//            cell.posterImage = nil
+//        }
+        
+//        cell.titleLbl.text = title
+//        cell.overviewLbl.text = overview
+        if movie.posterUrl != nil {
+            cell.posterImage.af_setImage(withURL: movie.posterUrl!)
         }
-        cell.titleLbl.text = title
-        cell.overviewLbl.text = overview
         return cell
     }
     
@@ -89,16 +95,28 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource,UITableVi
     private func leftRightDetect () {
         if leftRight.selectedSegmentIndex == 0 {
             self.navigationItem.title = "Now Playing"
-            fetchMovies(apiStr: apiNowPlayingString) { (fetchedMovies) in
-                self.movies = fetchedMovies
-                self.set_and_refresh()
+            MovieApiManager().nowPlayingMovies(apiKey: "now_playing?api_key=\(MovieApiManager.apiKey)") { (movies, error) in
+                if let movies = movies {
+                    self.movies = movies
+                    self.set_and_refresh()
+                }
             }
+//            fetchMovies(apiStr: apiNowPlayingString) { (fetchedMovies) in
+//                self.movies = fetchedMovies
+//                self.set_and_refresh()
+//            }
         } else {
             self.navigationItem.title = "Top Rated"
-            fetchMovies(apiStr: apiTopRatedString) { (fetchedMovies) in
-                self.movies = fetchedMovies
-                self.set_and_refresh()
+            MovieApiManager().nowPlayingMovies(apiKey: "top_rated?api_key=\(MovieApiManager.apiKey)") { (movies, error) in
+                if let movies = movies {
+                    self.movies = movies
+                    self.set_and_refresh()
+                }
             }
+//            fetchMovies(apiStr: apiTopRatedString) { (fetchedMovies) in
+//                self.moviesDict = fetchedMovies
+//                self.set_and_refresh()
+//            }
         }
     }
     

@@ -24,8 +24,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
 
     var heroapiStr: String = "https://api.themoviedb.org/3/movie/363088/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1"
     
-    var movies:[[String: Any]]!
-    var filteredMovie:[[String: Any]]?
+//    var movies:[[String: Any]]!
+    var movies:[Movie]!
+    var filteredMovie:[Movie]?
+//    var filteredMovie:[[String: Any]]?
     // MARK:PROPERTIES END
     
     override func viewDidLoad() {
@@ -49,11 +51,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
         refreshControl.addTarget(self, action: #selector(CollectionViewController.didPullToRefresh(_:)), for: .valueChanged)
         collectionView.insertSubview(refreshControl, at: 0)
 
-        fetchMovies(apiStr: heroapiStr) { (fetchedMovies) in
-            self.movies = fetchedMovies
-            self.set_and_refresh()
-            self.filteredMovie = self.movies
+        MovieApiManager().nowPlayingMovies(apiKey: "363088/similar?api_key=\(MovieApiManager.apiKey)") { (movies, error) in
+            if let movies = movies {
+                self.movies = movies
+                self.set_and_refresh()
+            }
         }
+//        fetchMovies(apiStr: heroapiStr) { (fetchedMovies) in
+//            self.movies = fetchedMovies
+//            self.set_and_refresh()
+//            self.filteredMovie = self.movies
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,15 +73,16 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
         } else {
             self.navigationController?.setNavigationBarHidden(true, animated: false)
         }
-        
     }
     
     // MARK:CUSTOM FUNCTONS
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         //        fetchMovies()
-        fetchMovies(apiStr: heroapiStr) { (fetchedMovies) in
-            self.movies = fetchedMovies
-            self.set_and_refresh()
+        MovieApiManager().nowPlayingMovies(apiKey: "363088/similar?api_key=\(MovieApiManager.apiKey)") { (movies, error) in
+            if let movies = movies {
+                self.movies = movies
+                self.set_and_refresh()
+            }
         }
     }
     
@@ -85,23 +94,32 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
     
     // MARK:COLLECTIONVIEW DELEGATE IMPLEMENTATION
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var totalRow = 0
-        if let movies = filteredMovie {
-            totalRow = movies.count
+        let totalRow = 0
+        if filteredMovie != nil {
+            return filteredMovie!.count
+        } else if movies != nil {
+            return movies.count
         }
         return totalRow
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCollectionCell
-
-        if let movie = filteredMovie?[indexPath.row] {
-            let posterPath = movie["poster_path"] as! String
+        let movie:Movie
+        if filteredMovie != nil {
+            movie = filteredMovie![indexPath.row]
+        } else {
+             movie = movies[indexPath.row]
+        }
+        
+//        if let movie = filteredMovie?[indexPath.row] {
+//            let posterPath = movie["poster_path"] as! String
+            let posterPath = movie.posterPath
             //        let basePosterPath = "https://image.tmdb.org/t/p/w500"
             let smallPosterPath = "https://image.tmdb.org/t/p/w45"
             let largePosterPath = "https://image.tmdb.org/t/p/w500"
             imageLoad(smallImgURL: smallPosterPath + posterPath, largeImgURL: largePosterPath + posterPath, img: cell.posterImage)
-        }
+//        }
 //        if let posterURL = URL(string: basePosterPath + posterPath) {
 //
 //            cell.posterImage.af_setImage(withURL: posterURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
@@ -181,7 +199,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource,UIC
     // MARK:SEARCHBAR IMPLEMENTATION
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredMovie = searchText.isEmpty ? self.movies : self.movies.filter({ (eachMovie) -> Bool in
-            let movieTitle = eachMovie["title"] as! String
+//            let movieTitle = eachMovie["title"] as! String
+            let movieTitle = eachMovie.title
             return movieTitle.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         })
         collectionView.reloadData()

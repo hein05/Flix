@@ -19,33 +19,47 @@ class DetailCellViewController: UIViewController {
    
     @IBOutlet weak var detailTxt: UITextView!
     
-    var movieDetail:[String:Any]?
+//    var movieDetail:[String:Any]?
+    var movieDetail:Movie?
     // MARK:PROPERTIES END
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.isUserInteractionEnabled = true
         coverImg.isUserInteractionEnabled = true
+//        if let movieDetail = movieDetail {
+//            let title = movieDetail["title"] as! String
+//            let overview = movieDetail["overview"] as! String
+//            let posterPath = movieDetail["poster_path"] as! String
+//            let backdropPath = movieDetail["backdrop_path"] as! String
+//            let releaseDate = movieDetail["release_date"] as! String
+//            let basePosterPath = "https://image.tmdb.org/t/p/w500"
+//
+//            self.dateLbl.text = releaseDate
+//            self.titleLbl.text = title
+//            self.detailTxt.text = overview
+//
+//            guard let posterURL = URL(string: basePosterPath + posterPath), let backdropURL = URL(string: basePosterPath + backdropPath) else {
+//                return
+//            }
+//            self.posterImg.af_setImage(withURL: posterURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
+//            self.coverImg.af_setImage(withURL: backdropURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
+//        }
+        
         if let movieDetail = movieDetail {
-            let title = movieDetail["title"] as! String
-            let overview = movieDetail["overview"] as! String
-            let posterPath = movieDetail["poster_path"] as! String
-            let backdropPath = movieDetail["backdrop_path"] as! String
-            let releaseDate = movieDetail["release_date"] as! String
-            let basePosterPath = "https://image.tmdb.org/t/p/w500"
+            self.dateLbl.text = movieDetail.releaseDate
+            self.titleLbl.text = movieDetail.title
+            self.detailTxt.text = movieDetail.overview
             
-            self.dateLbl.text = releaseDate
-            self.titleLbl.text = title
-            self.detailTxt.text = overview
-            
-            guard let posterURL = URL(string: basePosterPath + posterPath), let backdropURL = URL(string: basePosterPath + backdropPath) else {
-                return
+            if let posterUrl = movieDetail.posterUrl {
+                self.posterImg.af_setImage(withURL: posterUrl, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
             }
             
-            self.posterImg.af_setImage(withURL: posterURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
-            self.coverImg.af_setImage(withURL: backdropURL, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
-            
+            if let backdropUrl = movieDetail.backdropUrl {
+                self.coverImg.af_setImage(withURL: backdropUrl, placeholderImage: #imageLiteral(resourceName: "troll"), imageTransition: .crossDissolve(0.5))
+            }
         }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +75,7 @@ class DetailCellViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trailer" {
             let destinVC = segue.destination as! WebViewController
-            destinVC.movieID = movieDetail!["id"] as? Int
+            destinVC.movieID = movieDetail?.movieID
         }
     }
     

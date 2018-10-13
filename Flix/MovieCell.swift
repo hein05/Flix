@@ -9,11 +9,18 @@
 import UIKit
 
 class MovieCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var overviewLbl: UILabel!
     
     @IBOutlet weak var posterImage: UIImageView!
+    
+    var movie: Movie! {
+        didSet {
+            titleLbl.text = movie.title
+            overviewLbl.text = movie.overview
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
